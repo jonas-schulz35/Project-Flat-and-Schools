@@ -12,24 +12,24 @@ OLS_Formula <- price_sqm_log ~
   garten_Yes + parkplatz_Yes + balkon_Yes + keller_Yes + aufzug_Yes + 
   zimmeranzahl + etage_num + Sozialindexstufe_faktor
 
-OLS_regression_buy <- lm(
+OLS_buy <- lm(
   formula = OLS_Formula,
   data = City_Flat_bought
 )
 
-summary(OLS_regression_buy) 
+summary(OLS_buy) 
 
 OLS_Formula_2<-  rent_sqm_log ~ 
   dist_d + baujahr_kat  + wohnflaeche + ausstattung_faktor +
   garten_Yes + parkplatz_Yes + balkon_Yes + keller_Yes + aufzug_Yes + 
   zimmeranzahl + etage_num 
 
-OLS_regression_rent <- lm(
+OLS_rent <- lm(
   formula = OLS_Formula_2,
   data = City_Flat_rented
 )
 
-summary(OLS_regression_rent)
+summary(OLS_rent)
 
 
 #______________________________________________________________________________#
@@ -49,15 +49,15 @@ coef_label <- c(
 )
 
 reg_table_old <- msummary(
-  list(OLS_regression_buy, OLS_regression_rent),
+  list(OLS_buy, OLS_rent),
   output = "kableExtra",
   escape = TRUE,
   vcov = "HC3",
   stars = TRUE,
   estimate = "{estimate} ({std.error}){stars}",
   statistic = NULL,
-  coef_map = coef_label,
   coef_omit = c(-1),
+  coef_map = coef_label,
   gof_map = goef_labels,
   col.names = c("", "1","2"),
   title = "OLS Regression Flats",
@@ -73,6 +73,30 @@ reg_table_old
 
 #______________________________________________________________________________#
 #                     Plot                                                  ####
+
+OLS_Formula <- price_sqm_log ~ 
+  dist_kat + baujahr_kat + wohnflaeche  + ausstattung_faktor +
+  garten_Yes + parkplatz_Yes + balkon_Yes + keller_Yes + aufzug_Yes + 
+  zimmeranzahl + etage_num + Sozialindexstufe_faktor
+
+OLS_regression_buy <- lm(
+  formula = OLS_Formula,
+  data = City_Flat_bought
+)
+
+summary(OLS_regression_buy) 
+
+OLS_Formula_2<-  rent_sqm_log ~ 
+  dist_kat + baujahr_kat  + wohnflaeche + ausstattung_faktor +
+  garten_Yes + parkplatz_Yes + balkon_Yes + keller_Yes + aufzug_Yes + 
+  zimmeranzahl + etage_num 
+
+OLS_regression_rent <- lm(
+  formula = OLS_Formula_2,
+  data = City_Flat_rented
+)
+
+summary(OLS_regression_rent)
 
 
 reg_results <- tidy(OLS_regression_buy)
@@ -141,3 +165,4 @@ ggsave(filename = save_path,
        units = "px",
        width = 1920,
        height = 1080)
+
