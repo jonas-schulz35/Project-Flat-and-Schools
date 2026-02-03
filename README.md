@@ -21,7 +21,5 @@ influence on the price per square meter as well as on the rent per square meter.
 The price per squaremter is in both cases related to the characteristica of the apartments.
 
 
-<img src="<img https://github.com/jonas-schulz35/Project-Flat-and-Schools/blob/main/figures/crossbar_buy.png />
-" style="width:50.0%;height:50.0%"
+<img src="" style="width:50.0%;height:50.0%"
 data-align="center" />
-
