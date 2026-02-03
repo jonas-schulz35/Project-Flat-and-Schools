@@ -1,0 +1,119 @@
+library(tidyverse)
+library(kableExtra)
+library(dplyr)
+library(tidyr)
+
+
+Table_buy <- City_Flat_bought %>%
+  mutate(
+    basic         = if_else(ausstattung_faktor == "1", 1, 0, missing = 0),
+    normal        = if_else(ausstattung_faktor == "2", 1, 0, missing = 0),
+    sophisticated = if_else(ausstattung_faktor == "4", 1, 0, missing = 0),
+    Deluxe        = if_else(ausstattung_faktor == "3", 1, 0, missing = 0),
+    missing       = if_else(ausstattung_faktor == "0" | is.na(ausstattung_faktor), 1, 0)
+  ) %>% 
+  mutate(
+    "1970-1979"    = if_else(baujahr_kat == "1", 1, 0),
+    "1980-1989"    = if_else(baujahr_kat == "2", 1, 0),
+    "1990-1999"    = if_else(baujahr_kat == "3", 1, 0),
+    "2000-2009"    = if_else(baujahr_kat == "4", 1, 0),
+    "2010-2021"    = if_else(baujahr_kat == "5", 1, 0),
+  ) %>% 
+  rename("Residential Space" = wohnflaeche,
+         "No. of Rooms" = zimmeranzahl,
+         "No. of Floors" =  etage_num )
+
+Table_rent <- City_Flat_rented %>%
+  mutate(
+    basic         = if_else(ausstattung_faktor == "1", 1, 0, missing = 0),
+    normal        = if_else(ausstattung_faktor == "2", 1, 0, missing = 0),
+    sophisticated = if_else(ausstattung_faktor == "4", 1, 0, missing = 0),
+    Deluxe        = if_else(ausstattung_faktor == "3", 1, 0, missing = 0),
+    missing       = if_else(ausstattung_faktor == "0" | is.na(ausstattung_faktor), 1, 0)
+  ) %>% 
+  mutate(
+    "1970-1979"    = if_else(baujahr_kat == "1", 1, 0),
+    "1980-1989"    = if_else(baujahr_kat == "2", 1, 0),
+    "1990-1999"    = if_else(baujahr_kat == "3", 1, 0),
+    "2000-2009"    = if_else(baujahr_kat == "4", 1, 0),
+    "2010-2021"    = if_else(baujahr_kat == "5", 1, 0),
+  )%>% 
+  rename("Residential Space" = wohnflaeche,
+         "No. of Rooms" = zimmeranzahl,
+         "No. of Floors" =  etage_num )
+
+
+
+#_____________________________________________________________________________#
+#    Descriptive Table                                                      ####
+
+
+Table_buy_stats <- Table_buy %>% 
+  summarise(
+    across(c(Garden, Parking, Balcony, Cellar, Elevator, basic, 
+             normal,  sophisticated, Deluxe, missing,`1970-1979`, `1980-1989`,
+             `1990-1999`,`2000-2009`,`2010-2021`), mean,
+           .names = "mean__{col}"),
+    across(c("Residential Space", "No. of Rooms","No. of Floors", price_sqm, price_sqm_log),
+           list(
+             mean = ~ mean(., na.rm = TRUE),
+             sd   = ~ sd(., na.rm = TRUE)
+           ),
+           .names = "{fn}__{col}"),
+  ) %>% 
+  pivot_longer(
+    cols = everything(),
+    names_pattern = "(.*)__(.*)", 
+    names_to = c("statistic", "variable"),
+    values_to = "value"
+  ) %>% 
+  pivot_wider(names_from = statistic, values_from = value)
+
+Table_rent_stats <- Table_rent %>% 
+  summarise(
+    across(c(Garden, Parking, Balcony, Cellar, Elevator,  basic, 
+             normal,  sophisticated, Deluxe, missing,`1970-1979`, `1980-1989`,
+             `1990-1999`,`2000-2009`,`2010-2021`), mean,
+           .names = "mean__{col}"),
+    across(c("Residential Space", "No. of Rooms","No. of Floors", rent_sqm, rent_sqm_log),
+           list(
+             mean = ~ mean(., na.rm = TRUE),
+             sd   = ~ sd(., na.rm = TRUE)
+           ),
+           .names = "{fn}__{col}"),
+  ) %>% 
+  pivot_longer(
+    cols = everything(),
+    names_pattern = "(.*)__(.*)", 
+    names_to = c("statistic", "variable"),
+    values_to = "value"
+  ) %>% 
+  pivot_wider(names_from = statistic, values_from = value)
+
+Deskriptiv_table <- full_join(
+  Table_rent_stats, Table_buy_stats, by = "variable"
+) %>% 
+  mutate(
+    difference = mean.x - mean.y,
+    difference = cell_spec(round(difference, 3), 
+                           color = "red", 
+                           bold = TRUE,)
+  )          
+
+options(knitr.kable.NA = ' ')
+
+kable(
+  Deskriptiv_table,
+  escape = F,
+  caption = "summary statistics of housing Variable",
+  align = "lrrrrr",
+  format = "latex",
+  digits = 3,
+  col.names = c("", "Mean", "Std. Dev.", "Mean", "Std.Dev", "Dif."),
+) %>% 
+  kable_classic("striped", full_width = F, html_font = "Calabri") %>% 
+  pack_rows("furnished", 6, 10) %>% 
+  pack_rows("Year of Construction", 11, 15) %>% 
+  pack_rows("Price", 19, 22) %>%
+  column_spec(1, bold = T) %>%
+  add_header_above(c("", "Flat buy" = 2, "Flat rent" = 2, ""))
