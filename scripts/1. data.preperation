@@ -4,16 +4,7 @@ library(fastDummies)
 library(ggplot2)
 library(readxl)
 
-#______________________________________________________________________________#
-#       Ablageort                                                           ####
 
-files <- list(
-  input = list(
-    School_data         = "data/raw/enoe.csv",
-    Distance_School     = "data/raw/fence_construction/"
-    School_Social_Index =
-    Flats_bought_2022   =
-    Flats_rented_2022  =
 #______________________________________________________________________________ #
 # Clenaning School Data                                                      ####
 
