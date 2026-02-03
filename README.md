@@ -16,7 +16,6 @@ the appartments.
 
 We find out that the distance to school on a one kilometer radius has a significant
 influence on the price per square meter as well as on the rent per square meter. 
-The price per squaremter is in both cases related to the characteristica of the apartments.
 
 
 <img src="figures/crossbar_buy.png" style="width:50.0%;height:50.0%"
