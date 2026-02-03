@@ -2,61 +2,62 @@
 \centering
 \caption{summary statistics of housing Variable}
 \centering
-\begin{tabular}[t]{>{}l|r|r|r|r|r}
+\begin{tabular}[t]{>{}l|r|r|r|r|>{}r}
 \hline
 \multicolumn{1}{c|}{} & \multicolumn{2}{c|}{Flat buy} & \multicolumn{2}{c|}{Flat rent} & \multicolumn{1}{c}{} \\
 \cline{2-3} \cline{4-5}
  & Mean & Std. Dev. & Mean & Std.Dev & Dif.\\
 \hline
-\textbf{Garden} & 0.177 &  & 0.185 &  & <span style=" font-weight: bold;    color: red !important;" >-0.008</span>\\
+\textbf{Garden} & 0.177 &  & 0.185 &  & \textbf{-0.008}\\
 \hline
-\textbf{Parking} & 0.586 &  & 0.664 &  & <span style=" font-weight: bold;    color: red !important;" >-0.078</span>\\
+\textbf{Parking} & 0.586 &  & 0.664 &  & \textbf{-0.078}\\
 \hline
-\textbf{Balcony} & 0.807 &  & 0.800 &  & <span style=" font-weight: bold;    color: red !important;" >0.008</span>\\
+\textbf{Balcony} & 0.807 &  & 0.800 &  & \textbf{0.008}\\
 \hline
-\textbf{Cellar} & 0.716 &  & 0.693 &  & <span style=" font-weight: bold;    color: red !important;" >0.023</span>\\
+\textbf{Cellar} & 0.716 &  & 0.693 &  & \textbf{0.023}\\
 \hline
-\textbf{Elevator} & 0.379 &  & 0.369 &  & <span style=" font-weight: bold;    color: red !important;" >0.01</span>\\
+\textbf{Elevator} & 0.379 &  & 0.369 &  & \textbf{0.010}\\
 \hline
 \multicolumn{6}{l}{\textbf{furnished}}\\
 \hline
-\textbf{\hspace{1em}basic} & 0.009 &  & 0.017 &  & <span style=" font-weight: bold;    color: red !important;" >-0.009</span>\\
+\textbf{\hspace{1em}basic} & 0.009 &  & 0.017 &  & \textbf{-0.009}\\
 \hline
-\textbf{\hspace{1em}normal} & 0.285 &  & 0.275 &  & <span style=" font-weight: bold;    color: red !important;" >0.01</span>\\
+\textbf{\hspace{1em}normal} & 0.285 &  & 0.275 &  & \textbf{0.010}\\
 \hline
-\textbf{\hspace{1em}sophisticated} & 0.033 &  & 0.034 &  & <span style=" font-weight: bold;    color: red !important;" >0</span>\\
+\textbf{\hspace{1em}sophisticated} & 0.033 &  & 0.034 &  & \textbf{0.000}\\
 \hline
-\textbf{\hspace{1em}Deluxe} & 0.000 &  & 0.000 &  & <span style=" font-weight: bold;    color: red !important;" >0</span>\\
+\textbf{\hspace{1em}Deluxe} & 0.000 &  & 0.000 &  & \textbf{0.000}\\
 \hline
-\textbf{\hspace{1em}missing} & 0.673 &  & 0.674 &  & <span style=" font-weight: bold;    color: red !important;" >-0.001</span>\\
+\textbf{\hspace{1em}missing} & 0.673 &  & 0.674 &  & \textbf{-0.001}\\
 \hline
 \multicolumn{6}{l}{\textbf{Year of Construction}}\\
 \hline
-\textbf{\hspace{1em}1970-1979} & 0.253 &  & 0.000 &  & <span style=" font-weight: bold;    color: red !important;" >0.253</span>\\
+\textbf{\hspace{1em}1970-1979} & 0.253 &  & 0.000 &  & \textbf{0.253}\\
 \hline
-\textbf{\hspace{1em}1980-1989} & 0.161 &  & 0.000 &  & <span style=" font-weight: bold;    color: red !important;" >0.161</span>\\
+\textbf{\hspace{1em}1980-1989} & 0.161 &  & 0.000 &  & \textbf{0.161}\\
 \hline
-\textbf{\hspace{1em}1990-1999} & 0.221 &  & 0.345 &  & <span style=" font-weight: bold;    color: red !important;" >-0.124</span>\\
+\textbf{\hspace{1em}1990-1999} & 0.221 &  & 0.345 &  & \textbf{-0.124}\\
 \hline
-\textbf{\hspace{1em}2000-2009} & 0.088 &  & 0.196 &  & <span style=" font-weight: bold;    color: red !important;" >-0.109</span>\\
+\textbf{\hspace{1em}2000-2009} & 0.088 &  & 0.196 &  & \textbf{-0.109}\\
 \hline
-\textbf{\hspace{1em}2010-2021} & 0.277 &  & 0.200 &  & <span style=" font-weight: bold;    color: red !important;" >0.078</span>\\
+\textbf{\hspace{1em}2010-2021} & 0.277 &  & 0.200 &  & \textbf{0.078}\\
 \hline
-\textbf{Residential Space} & 71.733 & 23.971 & 81.892 & 29.701 & <span style=" font-weight: bold;    color: red !important;" >-10.159</span>\\
+\textbf{Residential Space} & 71.733 & 23.971 & 81.892 & 29.701 & \textbf{-10.159}\\
 \hline
-\textbf{No. of Rooms} & 2.492 & 0.866 & 2.797 & 0.993 & <span style=" font-weight: bold;    color: red !important;" >-0.305</span>\\
+\textbf{No. of Rooms} & 2.492 & 0.866 & 2.797 & 0.993 & \textbf{-0.305}\\
 \hline
-\textbf{No. of Floors} & 1.845 & 1.637 & 2.279 & 2.449 & <span style=" font-weight: bold;    color: red !important;" >-0.434</span>\\
+\textbf{No. of Floors} & 1.845 & 1.637 & 2.279 & 2.449 & \textbf{-0.434}\\
 \hline
 \multicolumn{6}{l}{\textbf{Price}}\\
 \hline
-\textbf{\hspace{1em}rent_sqm} & 9.561 & 3.152 &  &  & <span style=" font-weight: bold;    color: red !important;" >NA</span>\\
+\textbf{\hspace{1em}rent_sqm} & 9.561 & 3.152 &  &  & \textbf{}\\
 \hline
-\textbf{\hspace{1em}rent_sqm_log} & 2.207 & 0.315 &  &  & <span style=" font-weight: bold;    color: red !important;" >NA</span>\\
+\textbf{\hspace{1em}rent_sqm_log} & 2.207 & 0.315 &  &  & \textbf{}\\
 \hline
-\textbf{\hspace{1em}price_sqm} &  &  & 3633.227 & 1779.282 & <span style=" font-weight: bold;    color: red !important;" >NA</span>\\
+\textbf{\hspace{1em}price_sqm} &  &  & 3633.227 & 1779.282 & \textbf{}\\
 \hline
-\textbf{\hspace{1em}price_sqm_log} &  &  & 8.083 & 0.487 & <span style=" font-weight: bold;    color: red !important;" >NA</span>\\
+\textbf{\hspace{1em}price_sqm_log} &  &  & 8.083 & 0.487 & \textbf{}\\
 \hline
 \end{tabular}
 \end{table}
+> 
