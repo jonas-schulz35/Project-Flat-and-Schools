@@ -129,7 +129,6 @@ City_Flat_bought <- inner_join(relationship = "many-to-many",
         Parking = as.numeric(as.character(parkplatz_Yes))
       )
     
-    
     # Visual inspection of the Data     ####
     
     ggplot(NRW_Flat_bought, aes(kaufpreis, baujahr)) + geom_smooth(method = lm)
