@@ -5,7 +5,7 @@ library(tidyverse)
 
 # Clenaning School Data
 
-School_data <- read_excel("C:/Users/jonas/Documents/RUB Uni/WISE 2025/Data Analysis with R/Daten_projekt/school_data.xlsx")
+School_data <- read_excel("C:/Users/jonas/Documents/Data Analysis Project/school_data.xlsx")
 
 School_data_filtered <- School_data %>% 
   select(school_ID, school_type, district, plz, city_name, ergg_1km) %>% 
@@ -14,14 +14,14 @@ School_data_filtered <- School_data %>%
 
 # Cleaning Distance to School Data
 
-Distance_School <- read_csv("C:/Users/jonas/Documents/RUB Uni/WISE 2025/Data Analysis with R/Daten_projekt/distance_to_schools.csv")
+Distance_School <- read_csv("C:/Users/jonas/Documents/Data Analysis Project/distance_to_schools.csv")
 
  Distance_School_filtered <-Distance_School %>%
   filter(school_type == 2 & nn_order == 1)
 
 # Cleaning School Social Index 
 
-School_Social_Index <- read_excel("C:/Users/jonas/Documents/RUB Uni/WISE 2025/Data Analysis with R/Daten_projekt/2022_social_index-gereinigt.xlsx")
+School_Social_Index <- read_excel("C:/Users/jonas/Documents/Data Analysis Project/2022_social_index-gereinigt.xlsx")
 
 School_Social_Index_filtered <- School_Social_Index %>%
   select(Schulnummer, Sozialindexstufe) %>%
@@ -34,9 +34,6 @@ School_Social_Index_filtered <- School_Social_Index %>%
      )
     )
   )
-  rename(school_ID = Schulnummer)
-
-
 
 #Merging the Data Sets 
 
