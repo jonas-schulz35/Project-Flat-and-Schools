@@ -7,8 +7,8 @@ library(broom)
 #______________________________________________________________________________#
 # Method                                                                    ####
 
-OLS_Formula <- price_sgm_log ~ 
-  dist_d + baujahr_kat + wohnflaeche  + ausstattung_faktor +
+OLS_Formula <- price_sqm_log ~ 
+  dist_kat + baujahr_kat + wohnflaeche  + ausstattung_faktor +
   garten_Yes + parkplatz_Yes + balkon_Yes + keller_Yes + aufzug_Yes + 
   zimmeranzahl + etage_num + Sozialindexstufe_faktor
 
@@ -20,7 +20,7 @@ OLS_regression_buy <- lm(
 summary(OLS_regression_buy) 
 
 OLS_Formula_2<-  rent_sqm_log ~ 
-  dist_d + baujahr_kat  + wohnflaeche + ausstattung_faktor +
+  dist_kat + baujahr_kat  + wohnflaeche + ausstattung_faktor +
   garten_Yes + parkplatz_Yes + balkon_Yes + keller_Yes + aufzug_Yes + 
   zimmeranzahl + etage_num 
 
@@ -62,6 +62,7 @@ reg_table_old <- msummary(
   col.names = c("", "1","2"),
   title = "OLS Regression Flats",
   notes = "Parentheses shows robust standard errors.",
+  format = "latex"
 ) %>% 
   add_header_above(
     c("", "OLS_buy" = 1, "OLS_rent" = 1)
@@ -73,34 +74,40 @@ reg_table_old
 #______________________________________________________________________________#
 #                     Plot                                                  ####
 
+
 reg_results <- tidy(OLS_regression_buy)
-Plot_df<- reg_results %>% 
-  (grp = c("dist_kat0.25-0.50","dist_kat0.50-0.75","dist_kat0.75-1.00",
-           "dist_kat1.00-1.25","dist_kat1.25-1.50", "dist_kat1.50-1.75",
-           "dist_kat1.75-2.00"),
-   fit = 4:5, se = 1:2)
 
+reg_results_2 <- tidy(OLS_regression_rent)
 
-Plot_df <- reg_results %>%
-  filter(term %in% c("dist_kat0.25-0.50", "dist_kat0.50-0.75", "dist_kat0.75-1.00",
-                     "dist_kat1.00-1.25", "dist_kat1.25-1.50", "dist_kat1.50-1.75",
-                     "dist_kat1.75-2.00")) %>%
+Plot <- reg_results %>%
+  filter(term %in% 
+           c("dist_kat0.25-0.50", "dist_kat0.50-0.75", "dist_kat0.75-1.00",
+             "dist_kat1.00-1.25", "dist_kat1.25-1.50", "dist_kat1.50-1.75",
+              "dist_kat1.75-2.00")) %>%
   mutate(
-    dist_label = gsub("dist_kat", "", term), # Entfernt das Präfix für schönere Labels
+    dist_label = gsub("dist_kat", "", term), 
     fit = estimate,
     se = std.error
   )
 
-ggplot(Plot_df, aes(x = term, 
+ggplot(Plot, aes(x = term, 
                     y = estimate, 
                     ymin = estimate - 1.96 * std.error, 
                     ymax = estimate + 1.96 * std.error)) +
-  geom_crossbar(fatten = 2, fill = "grey90", width = 0.5) +
+  geom_crossbar(fatten = 2, fill = "grey", width = 0.5) +
   geom_hline(yintercept = 0, linetype = "dashed", color = "red") +
   labs(
     x = "Distance to School (Categories)",
     y = "Estimated Effect on Log House Price",
-    title = "OLS Estimates of School Choice Sets"
+    title = "Effect of Distance of School on Housing Prices"
   ) +
   theme_minimal()
+
+
+save_path <- "C:/Users/jonas/Documents/Data Analysis Project/crossbar_buy.png"
+ggsave(filename = save_path,
+       units = "px",
+       width = 1920,
+       height = 1080)
+
 
