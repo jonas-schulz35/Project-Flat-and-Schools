@@ -8,10 +8,10 @@
 \cmidrule(l{3pt}r{3pt}){2-2} \cmidrule(l{3pt}r{3pt}){3-3}
  & 1 & 2\\
 \midrule
-t & 0.001 (0.000)*** & -0.000 (0.000)\\
-Observations & 6693 & 15848\\
-R² & 0.3373 & 0.2756\\
-Adj. R² & 0.3343 & 0.2746\\
+distance to school & 0.126 (0.013)*** & 0.056 (0.006)***\\
+Observations & 6767 & 16090\\
+R² & 0.3341 & 0.2737\\
+Adj. R² & 0.3317 & 0.2730\\
 \bottomrule
 \multicolumn{3}{l}{\rule{0pt}{1em}Parentheses shows robust standard errors.}\\
 \end{tabular}
