@@ -1,0 +1,158 @@
+---
+title: "Data Analysis Project Flat"
+subtitle: "Flats and Schooling" 
+author: 
+  - name: "Jonas Schulz & Lars Hinrichs" 
+date: today
+date-format: DD.MM.YYYY
+format: 
+  beamer:
+    theme: Frankfurt
+    include-in-header: 
+      - text: \usepackage[style=apa,natbib]{biblatex}
+bibliography: references.bib
+editor: source
+---
+
+# Introduction 
+
+## Motivation 
+
+- Decreasing rate of owner occupied Flats in Germany & NRW @sv2025
+
+- Measuring the difference in owner occupied flats and rented flats like @k2016 
+  for energy efficiency
+
+- Emphasizing the value of school choice related to living in flats
+  
+- Comparison to the choice of schooling for houses like @hs2025
+
+---
+
+# Introduction
+
+## Research Question 
+
+- Has distance to school an impact on prices per squaremeter for flats as it has
+  for houses?
+
+# Data
+
+## Data for Primary Schools and Flats 
+
+- Data from the RWI Data @s2024 including variable explanation and description
+
+- Apartments in NRW that are owner occupied and rented 
+
+- Schooling Data for NRW with School Social Index and Distance to School by the 
+  Ministry for Schools in NRW 
+
+---
+
+# Data 
+
+## Descriptive Statistics
+
+\begin{table}
+\centering
+\fontsize{5}{6}\selectfont
+\input{/Users/larshinrichs/Desktop/Descriptive table.tex}
+\end{table}
+
+# Methodology 
+
+## Empirical Strategy 
+
+**OLS Regresssion** 
+
+- Measuring the difference for rented and for bought apartments 
+
+- Using of a Hedonic Price Index like @b1999 @bm2011
+  for characteristica for flats
+
+- Treatment group for the radius of one kilometer for the closest school 
+
+- Estimating semi logs for owner occupied and rented flats per squaremeter @k2016
+
+---
+
+# Methodology
+
+## Regression 
+
+ 
+$$Pricesqm_{log} = beta_{Treat} + X_{Fur} + SSI_{Factor}$$
+  -$beta_{Treat}$: Equals 1 for treatment group  
+  -$X_{Fur}$: Vector for Dummy Variables for Furnishing of Apartments
+  -$SSI_{fak}$: Factor variable for Social School index 
+  
+---  
+
+# Methodology
+
+## OLS Regression table
+
+\begin{table}
+\centering
+\caption{OLS Regression Flats}
+\centering
+\begin{tabular}[t]{lcc}
+\toprule
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{OLS\_buy} & \multicolumn{1}{c}{OLS\_rent} \\
+\cmidrule(l{3pt}r{3pt}){2-2} \cmidrule(l{3pt}r{3pt}){3-3}
+ & 1 & 2\\
+\midrule
+distance to school & 0.126 (0.013)*** & 0.056 (0.006)***\\
+Observations & 6767 & 16090\\
+R² & 0.3341 & 0.2737\\
+Adj. R² & 0.3317 & 0.2730\\
+\bottomrule
+\multicolumn{3}{l}{\rule{0pt}{1em}Parentheses shows robust standard errors.}\\
+\end{tabular}
+\end{table}
+
+# Results
+
+## Boxplots for distance to school for bought apartments
+
+\begin{figure}
+\includegraphics[width=0.9\linewidth]{/Users/larshinrichs/Desktop/Plot Flat buy.pdf}
+\caption{Results for treated Flats bought}
+\label{}
+\end{figure}
+
+---
+
+## Boxplots for distance to school for rented apartments
+
+\begin{figure}
+\includegraphics[width=0.9\linewidth]{/Users/larshinrichs/Desktop/Plot Flat rent.pdf}
+\caption{Results for treated Flats rented}
+\label{}
+\end{figure}
+
+
+# Conclusion 
+
+## Key Takeaways 
+
+- Treatment effect has an impact on prices for rented and bought flats
+- Higher impact for bought apartments  
+- School Social Index is positive correlated with the distance to school by the
+  average treatment effect 
+
+---
+
+# Conclusion
+
+## Limitations of our approach 
+
+- Omitted variable bias and measurement problems for some spezific variables 
+
+- Limitations due to missing data 
+
+- Multicollinearity between flat characteristics 
+
+
+# References {.allowframebreaks}
+
