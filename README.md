@@ -6,7 +6,7 @@ is done by Hörning und Schäfer (2025). We concentrate
 on apartements in North Rhine-Westphalia, which is with its 18 Million inhabitant 
 the largest federal State in Germany. 
 
-Thereore we took the data provided by the RWI in wihich they 
+Thereore we took the data provided by the RWI in which they 
 gathered data over the online-platform "Immobilien-Scout24" which is
 Germanies largest online Platform for real estate. The data for schools that we have used
 was provided by the ministry for schools in NRW. We only looked at primary schools in our model.
