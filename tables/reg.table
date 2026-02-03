@@ -1,0 +1,18 @@
+\begin{table}
+\centering
+\caption{OLS Regression Flats}
+\centering
+\begin{tabular}[t]{lcc}
+\toprule
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{OLS\_buy} & \multicolumn{1}{c}{OLS\_rent} \\
+\cmidrule(l{3pt}r{3pt}){2-2} \cmidrule(l{3pt}r{3pt}){3-3}
+ & 1 & 2\\
+\midrule
+t & 0.001 (0.000)*** & -0.000 (0.000)\\
+Observations & 6693 & 15848\\
+R² & 0.3373 & 0.2756\\
+Adj. R² & 0.3343 & 0.2746\\
+\bottomrule
+\multicolumn{3}{l}{\rule{0pt}{1em}Parentheses shows robust standard errors.}\\
+\end{tabular}
+\end{table}
