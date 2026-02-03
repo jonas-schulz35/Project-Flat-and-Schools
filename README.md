@@ -1,5 +1,3 @@
-# Project-Flat-and-Schools
-
 # Impact on price for Distance to next Elementary School
 This project sets the focus on flats instead of house like in the works that 
 is done by Hörning und Schäfer (2025). We concentrate
